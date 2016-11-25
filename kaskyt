@@ -1,0 +1,21 @@
+v1.0
+docker service create --name frontend --network tty-training botblob/tty-frontend
+docker service create --name haproxy --network tty-training -p 80:80 haproxy:14
+docker service create --name logstash --network tty-training logstash:17
+docker service create --name mongo --network tty-training mongo:3 mongod --rest
+
+docker service ps mongo
+2jlpckvjj6u3k7nrpttis7api
+docker exec -it mongo.1.2jlpckvjj6u3k7nrpttis7api mongo
+#
+use ordersDB
+db.orders.find()
+
+v2.0
+
+docker service create --name rabbitmq --network tty-training  rabbitmq:3
+docker service create --name frontend --network tty-training botblob/tty-frontend
+docker service create --name haproxy --network tty-training -p 80:80 haproxy:1
+docker service create --name logstash1 --network tty-training logstash1
+docker service create --name logstash2 --network tty-training logstash2
+docker service create --name mongo --network tty-training mongo:3 mongod --rest
