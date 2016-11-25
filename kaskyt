@@ -15,7 +15,7 @@ v2.0
 
 docker service create --name rabbitmq --network tty-training  rabbitmq:3
 docker service create --name frontend --network tty-training botblob/tty-frontend
-docker service create --name haproxy --network tty-training -p 80:80 haproxy:1
-docker service create --name logstash1 --network tty-training logstash1
-docker service create --name logstash2 --network tty-training logstash2
+docker service create --name haproxy --network tty-training -p 80:80 botblob/tty-haproxy
+docker service create --name logstash1 --network tty-training botblob/tty-logstash
+docker service create --name logstash2 --network tty-training botblob/tty-logstashout
 docker service create --name mongo --network tty-training mongo:3 mongod --rest
